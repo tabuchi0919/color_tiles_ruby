@@ -13,10 +13,13 @@ class ColorTilesGame
 
   def click(h, w)
     @field.exec(h, w)
+    to_s
   end
 
   def to_s
-    @field.to_s
+    @field.area.map do |row|
+      row.map { |cell| cell == EMPTY ? '#' : cell.to_s }.join
+    end.join("\n")
   end
 
   def score

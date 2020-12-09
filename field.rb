@@ -42,14 +42,6 @@ class Field
     targets.group_by { |target| target[1] }.reject { |_k, v| v.one? }.values.flatten(1).each do |cur, _color|
       @area[cur[0]][cur[1]] = EMPTY
     end
-
-    puts to_s
-  end
-
-  def to_s
-    @area.map do |row|
-      row.map { |cell| cell == EMPTY ? '#' : cell.to_s }.join
-    end.join("\n")
   end
 
   def score
