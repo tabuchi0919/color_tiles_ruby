@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require './field'
 class ColorTilesGame
+  require './field'
 
   EMPTY = -1
   MOVES = [

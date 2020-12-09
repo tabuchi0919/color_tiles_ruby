@@ -1,5 +1,3 @@
-require './color_tiles_game'
-
 class Field
   attr_accessor :area
 
