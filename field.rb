@@ -22,7 +22,7 @@ class Field
   end
 
   def exec(h, w)
-    raise ArgumentError unless in?(h, w)
+    raise ArgumentError unless contains?(h, w)
 
     return unless @area[h][w] == EMPTY
 
@@ -32,7 +32,7 @@ class Field
         cur[0] += move[0]
         cur[1] += move[1]
 
-        break unless in?(cur[0], cur[1])
+        break unless contains?(cur[0], cur[1])
 
         color = @area[cur[0]][cur[1]]
         next if color == EMPTY
@@ -60,7 +60,7 @@ class Field
 
   private
 
-  def in?(h, w)
+  def contains?(h, w)
     h >= 0 && h < @height && w >= 0 && w < @width
   end
 
