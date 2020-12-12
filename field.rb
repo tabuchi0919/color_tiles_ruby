@@ -9,8 +9,6 @@ class Field
   def initialize(color: 2, count: 5, height: 4, width: 4)
     raise ArgumentError if color * count >= height * width
 
-    @color = color
-    @count = count
     @height = height
     @width = width
     @area = (
@@ -39,14 +37,15 @@ class Field
       end
     end.compact
 
+    score = 0
     targets.group_by { |target| target[1] }.reject { |_k, v| v.one? }.values.flatten(1).each do |cur, _color|
       @area[cur[0]][cur[1]] = EMPTY
+      score += 1
     end
+
+    score
   end
 
-  def score
-    @color * @count - @height * @width + @area.flatten.count(&:negative?)
-  end
 
   private
 
