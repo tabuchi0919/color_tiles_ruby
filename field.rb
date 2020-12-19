@@ -1,6 +1,4 @@
 class Field
-  attr_accessor :area
-
   EMPTY = -1
   MOVES = [
     [1, 0], [-1, 0], [0, 1], [0, -1]
@@ -46,6 +44,11 @@ class Field
     score
   end
 
+  def to_s
+    @area.map do |row|
+      row.map { |cell| cell == EMPTY ? '#' : cell.to_s }.join
+    end.join("\n")
+  end
 
   private
 
